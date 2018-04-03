@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		680845DC207402A40013B006 /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 680845DA2074029D0013B006 /* Apollo.framework */; };
+		680845DD207402A40013B006 /* Apollo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 680845DA2074029D0013B006 /* Apollo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		680845DE207402A40013B006 /* ApolloSQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 680845D92074029D0013B006 /* ApolloSQLite.framework */; };
+		680845DF207402A40013B006 /* ApolloSQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 680845D92074029D0013B006 /* ApolloSQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		680845E0207402A40013B006 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 680845DB2074029D0013B006 /* SQLite.framework */; };
+		680845E1207402A40013B006 /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 680845DB2074029D0013B006 /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		68B1D4CC20732F2D00A356E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B1D4CB20732F2D00A356E6 /* AppDelegate.swift */; };
 		68B1D4CE20732F2D00A356E6 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B1D4CD20732F2D00A356E6 /* MasterViewController.swift */; };
 		68B1D4D020732F2D00A356E6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B1D4CF20732F2D00A356E6 /* DetailViewController.swift */; };
@@ -15,7 +21,26 @@
 		68B1D4D820732F2E00A356E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68B1D4D620732F2E00A356E6 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		680845E2207402A40013B006 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				680845DD207402A40013B006 /* Apollo.framework in Embed Frameworks */,
+				680845DF207402A40013B006 /* ApolloSQLite.framework in Embed Frameworks */,
+				680845E1207402A40013B006 /* SQLite.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		680845D92074029D0013B006 /* ApolloSQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ApolloSQLite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		680845DA2074029D0013B006 /* Apollo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Apollo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		680845DB2074029D0013B006 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SQLite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68B1D4C820732F2D00A356E6 /* Repose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Repose.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68B1D4CB20732F2D00A356E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68B1D4CD20732F2D00A356E6 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -31,16 +56,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				680845DC207402A40013B006 /* Apollo.framework in Frameworks */,
+				680845DE207402A40013B006 /* ApolloSQLite.framework in Frameworks */,
+				680845E0207402A40013B006 /* SQLite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		680845D8207402840013B006 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				680845DA2074029D0013B006 /* Apollo.framework */,
+				680845D92074029D0013B006 /* ApolloSQLite.framework */,
+				680845DB2074029D0013B006 /* SQLite.framework */,
+			);
+			name = Frameworks;
+			path = Repose;
+			sourceTree = "<group>";
+		};
 		68B1D4BF20732F2D00A356E6 = {
 			isa = PBXGroup;
 			children = (
 				68B1D4CA20732F2D00A356E6 /* Repose */,
+				680845D8207402840013B006 /* Frameworks */,
 				68B1D4C920732F2D00A356E6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -77,6 +117,7 @@
 				68B1D4C420732F2D00A356E6 /* Sources */,
 				68B1D4C520732F2D00A356E6 /* Frameworks */,
 				68B1D4C620732F2D00A356E6 /* Resources */,
+				680845E2207402A40013B006 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
