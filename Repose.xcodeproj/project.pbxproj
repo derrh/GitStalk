@@ -19,6 +19,7 @@
 		68B1D4D320732F2D00A356E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68B1D4D120732F2D00A356E6 /* Main.storyboard */; };
 		68B1D4D520732F2E00A356E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68B1D4D420732F2E00A356E6 /* Assets.xcassets */; };
 		68B1D4D820732F2E00A356E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68B1D4D620732F2E00A356E6 /* LaunchScreen.storyboard */; };
+		68CAD5832074221B00F77E25 /* GithubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CAD5822074221B00F77E25 /* GithubAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,6 +50,9 @@
 		68B1D4D420732F2E00A356E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68B1D4D720732F2E00A356E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		68B1D4D920732F2E00A356E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68CAD57B20741ADE00F77E25 /* github.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = github.json; sourceTree = "<group>"; };
+		68CAD57C20741ADE00F77E25 /* github.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = github.graphql; sourceTree = "<group>"; };
+		68CAD5822074221B00F77E25 /* GithubAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,7 @@
 		68B1D4CA20732F2D00A356E6 /* Repose */ = {
 			isa = PBXGroup;
 			children = (
+				68CAD57A20741AA600F77E25 /* API */,
 				68B1D4CB20732F2D00A356E6 /* AppDelegate.swift */,
 				68B1D4CD20732F2D00A356E6 /* MasterViewController.swift */,
 				68B1D4CF20732F2D00A356E6 /* DetailViewController.swift */,
@@ -107,6 +112,16 @@
 			path = Repose;
 			sourceTree = "<group>";
 		};
+		68CAD57A20741AA600F77E25 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				68CAD5822074221B00F77E25 /* GithubAPI.swift */,
+				68CAD57B20741ADE00F77E25 /* github.json */,
+				68CAD57C20741ADE00F77E25 /* github.graphql */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -114,6 +129,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 68B1D4DC20732F2E00A356E6 /* Build configuration list for PBXNativeTarget "Repose" */;
 			buildPhases = (
+				68CAD58120741FFA00F77E25 /* ShellScript */,
 				68B1D4C420732F2D00A356E6 /* Sources */,
 				68B1D4C520732F2D00A356E6 /* Frameworks */,
 				68B1D4C620732F2D00A356E6 /* Resources */,
@@ -174,6 +190,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		68CAD58120741FFA00F77E25 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APOLLO_FRAMEWORK_PATH=\"$(eval find $FRAMEWORK_SEARCH_PATHS -name \"Apollo.framework\" -maxdepth 1)\"\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}/API\"\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-codegen.sh \\\n    generate github.graphql \\\n    --schema github.json \\\n    --output GithubAPI.swift\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		68B1D4C420732F2D00A356E6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -182,6 +214,7 @@
 				68B1D4D020732F2D00A356E6 /* DetailViewController.swift in Sources */,
 				68B1D4CE20732F2D00A356E6 /* MasterViewController.swift in Sources */,
 				68B1D4CC20732F2D00A356E6 /* AppDelegate.swift in Sources */,
+				68CAD5832074221B00F77E25 /* GithubAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
