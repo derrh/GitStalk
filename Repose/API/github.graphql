@@ -9,32 +9,8 @@ query GetUser($login: String!) {
   #   }
   # }
   user(login: $login) {
-    pullRequests(last: 1) {
-      nodes {
-        title
-        timeline(first: 15) {
-          nodes {
-            __typename
-            ...on Commit {
-              oid
-            }
-            ...on Comment {
-              author {
-                login
-              }
-            }
-            ...on MergedEvent {
-              commit {
-                oid
-              }
-            }
-            ...on ClosedEvent {
-              createdAt
-            }
-          }
-        }
-      }
-    }
+    name
+    bio
   }
 }
 

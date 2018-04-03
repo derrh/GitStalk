@@ -20,6 +20,8 @@
 		68B1D4D520732F2E00A356E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68B1D4D420732F2E00A356E6 /* Assets.xcassets */; };
 		68B1D4D820732F2E00A356E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68B1D4D620732F2E00A356E6 /* LaunchScreen.storyboard */; };
 		68CAD5832074221B00F77E25 /* GithubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CAD5822074221B00F77E25 /* GithubAPI.swift */; };
+		68CAD5852074347B00F77E25 /* token.private in Resources */ = {isa = PBXBuildFile; fileRef = 68CAD5842074347B00F77E25 /* token.private */; };
+		68CAD589207434E600F77E25 /* Apollo+GitStalk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CAD588207434E600F77E25 /* Apollo+GitStalk.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,6 +55,8 @@
 		68CAD57B20741ADE00F77E25 /* github.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = github.json; sourceTree = "<group>"; };
 		68CAD57C20741ADE00F77E25 /* github.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = github.graphql; sourceTree = "<group>"; };
 		68CAD5822074221B00F77E25 /* GithubAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubAPI.swift; sourceTree = "<group>"; };
+		68CAD5842074347B00F77E25 /* token.private */ = {isa = PBXFileReference; lastKnownFileType = text; path = token.private; sourceTree = "<group>"; };
+		68CAD588207434E600F77E25 /* Apollo+GitStalk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apollo+GitStalk.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,8 @@
 				68CAD5822074221B00F77E25 /* GithubAPI.swift */,
 				68CAD57B20741ADE00F77E25 /* github.json */,
 				68CAD57C20741ADE00F77E25 /* github.graphql */,
+				68CAD5842074347B00F77E25 /* token.private */,
+				68CAD588207434E600F77E25 /* Apollo+GitStalk.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -185,6 +191,7 @@
 				68B1D4D820732F2E00A356E6 /* LaunchScreen.storyboard in Resources */,
 				68B1D4D520732F2E00A356E6 /* Assets.xcassets in Resources */,
 				68B1D4D320732F2D00A356E6 /* Main.storyboard in Resources */,
+				68CAD5852074347B00F77E25 /* token.private in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68CAD589207434E600F77E25 /* Apollo+GitStalk.swift in Sources */,
 				68B1D4D020732F2D00A356E6 /* DetailViewController.swift in Sources */,
 				68B1D4CE20732F2D00A356E6 /* MasterViewController.swift in Sources */,
 				68B1D4CC20732F2D00A356E6 /* AppDelegate.swift in Sources */,
