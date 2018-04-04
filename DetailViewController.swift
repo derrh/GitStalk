@@ -17,6 +17,8 @@ class DetailViewController: UITableViewController {
   @IBOutlet weak var bioLabel: UILabel!
   @IBOutlet weak var loadingView: UIView!
   
+  var repos: [GetUserQuery.Data.User.Repository.Node] = []
+  
   enum LoadingStatus {
     case empty
     case loading
@@ -75,6 +77,7 @@ class DetailViewController: UITableViewController {
       name = data.user?.name ?? ""
       bio = data.user?.bio ?? ""
       imageURL = (data.user?.avatarUrl).flatMap(URL.init(string:))
+      repos = data.user?.repositories.nodes?.compactMap { $0 } ?? []
     case .error(let error):
       isLoading = false
       let alert = UIAlertController(
@@ -129,5 +132,21 @@ class DetailViewController: UITableViewController {
       return "Recent Comments"
     }
     return ""
+  }
+  
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    if section == 0 {
+      return repos.count
+    }
+    return 0
+  }
+  
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "RepoCell")!
+    
+    let repo = repos[indexPath.row]
+    cell.textLabel?.text = repo.name
+    
+    return cell
   }
 }

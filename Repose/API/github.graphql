@@ -1,17 +1,18 @@
 query GetUser($login: String!) {
-  # organization(login:"apple") {
-  #   repository(name:"swift") {
-  #     pullRequests(last: 50) {
-  #       nodes {
-  #         title
-  #       }
-  #     }
-  #   }
-  # }
   user(login: $login) {
     name
     bio
     avatarUrl
+    repositories(first:5, orderBy:{ field:UPDATED_AT, direction:DESC}) {
+      nodes {
+        name
+      }
+    }
+    commitComments(first:5) {
+      nodes {
+        body
+      }
+    }
   }
 }
 
