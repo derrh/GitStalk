@@ -8,10 +8,11 @@
 
 import UIKit
 import Apollo
+import Kingfisher
 
 class DetailViewController: UITableViewController {
   @IBOutlet weak var avatarContainerView: UIView!
-  @IBOutlet weak var avatarView: UIView!
+  @IBOutlet weak var avatarView: UIImageView!
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var bioLabel: UILabel!
   @IBOutlet weak var loadingView: UIView!
@@ -26,6 +27,7 @@ class DetailViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     updateView(status: .empty)
+    avatarContainerView.layer.cornerRadius = 30
   }
   
   var login: String = "" {
@@ -34,7 +36,7 @@ class DetailViewController: UITableViewController {
         return
       }
       
-      title = login
+      title = "@" + login
       updateView(status: .loading)
       refresh()
     }
@@ -72,6 +74,7 @@ class DetailViewController: UITableViewController {
       isLoading = false
       name = data.user?.name ?? ""
       bio = data.user?.bio ?? ""
+      imageURL = (data.user?.avatarUrl).flatMap(URL.init(string:))
     case .error(let error):
       isLoading = false
       let alert = UIAlertController(
@@ -91,5 +94,40 @@ class DetailViewController: UITableViewController {
     nameLabel.isHidden = isLoading
     nameLabel.text = name
     bioLabel.text = bio
+    avatarView.kf.setImage(with: imageURL)
+    
+    tableView.reloadData()
+  }
+  
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    guard let headerView = tableView.tableHeaderView else {
+      return
+    }
+    
+    let height = headerView.systemLayoutSizeFitting(
+      UILayoutFittingCompressedSize
+      ).height
+    
+    if height != headerView.bounds.height {
+      headerView.frame.size.height = height
+      tableView.tableHeaderView = headerView
+      tableView.layoutIfNeeded()
+    }
+  }
+  
+  // MARK - Table
+  
+  override func numberOfSections(in tableView: UITableView) -> Int {
+    return 2
+  }
+  
+  override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    if section == 0 {
+      return "Repositories"
+    } else if section == 1 {
+      return "Recent Comments"
+    }
+    return ""
   }
 }

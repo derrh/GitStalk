@@ -34,12 +34,14 @@ class MasterViewController: UIViewController {
   @IBAction func loginChanged(_ sender: Any) {
     updateStalkButton()
   }
+  
   // MARK: - Segues
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "showDetail" {
-      let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-      controller.login = loginTextField.text ?? "derrh"
+      let controller = segue.destination as! DetailViewController
+      controller.login = (loginTextField.text ?? "derrh")
+        .trimmingCharacters(in: CharacterSet(charactersIn: "@"))
     }
   }
 }

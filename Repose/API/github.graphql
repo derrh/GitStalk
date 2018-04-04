@@ -11,6 +11,7 @@ query GetUser($login: String!) {
   user(login: $login) {
     name
     bio
+    avatarUrl
   }
 }
 
